@@ -1,0 +1,44 @@
+<html>
+<link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css" />
+<link rel="stylesheet" href="/static/style.css" />
+
+<body>
+	<main>
+		<h3>Contacts</h3>
+		<a href="/contacts/upload"><button>Kontakt erstellen</button></a>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Number</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% contacts.forEach( o=> { %>
+					<tr>
+						<td>
+							<%= o.name %>
+						</td>
+						<td><%= o.number %></td>
+						<td><a href="/contacts/<%= o.id %>">Mehr</a></td>
+					</tr>
+					<% }) %>
+			</tbody>
+		</table>
+	</main>
+</body>
+
+<script>
+	async function deleteFruit(id) {
+		const req = await fetch('http://localhost:3000/contacts/' + id, {
+			method: 'DELETE'
+		})
+		const data = await req.status
+		if(data === 204)
+			location.reload()
+	}
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+<html>
+<link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css" />
+<style>
+  button[type=submit] {
+    float: right;
+    margin-top: 1rem;
+  }
+</style>
+
+<body>
+  <main>
+    <a href="/"><button>Zurück</button></a>
+    <h3>Kontakt erstellen</h3>
+    <form action="/" method="POST">
+      <label for="name">Name: </label>
+      <small>Name must be unqiue!</small>
+      <input type="text" name="name" id="name" placeholder="Joy" required>
+      <label for="name">Telefon: </label>
+      <input type="text" name="number" id="number" placeholder="+49 176 89585210" required>
+      <button type="submit">Confirm</button>
+    </form>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+  <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css" />
+  <body>
+    <main>
+      <a href="/"><button>Zurück</button></a>
+      <h3><%= name %></h3>
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td><%= name %></td>
+        </tr>
+        <tr>
+          <td>Number:</td>
+          <td><%- number %></td>
+        </tr>
+        <tr>
+          <td>Actions: </td>
+          <td><button onclick="deleteFruit()">Delete</button></td>
+        </tr>
+      </table>
+    </main>
+    <script>
+      async function deleteFruit() {
+        const req = await fetch('http://localhost:3000/contacts/<%= id %>', {
+          method: 'DELETE'
+        })
+        const data = await req.status
+        if(data === 204)
+          window.location.replace("http://localhost:3000/");
+      }
+    </script>
+  </body>
+</html>
