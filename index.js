@@ -29,7 +29,7 @@ app.route('/')
     .post((req, res) => {
         const { name, number } = req.body
         if (DATA.some((fruit) => fruit.name === name)) {
-            res.status(400).send(`Duplicate name "${name}". Nothing inserted`)
+            res.status(400).render('error/duplicate', { name })
         } else {
             const id = DATA.length ? Math.max(...DATA.map((o) => o.id)) + 1 : 1
             const fruit = { id, name, number }
